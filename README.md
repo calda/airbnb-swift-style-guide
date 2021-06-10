@@ -728,6 +728,41 @@ _You can enable the following settings in Xcode by running [this script](resourc
   let dictionary: [String: Any] = [:]
   ```
 
+* <a id='single-line-expression-braces'></a>(<a href='#single-line-expression-braces'>link</a>) The opening brace following a single-line expression should not wrap to a newline.[![SwiftFormat: braces](https://img.shields.io/badge/SwiftFormat-braces-7B0051.svg)](https://github.com/nicklockwood/SwiftFormat/blob/master/Rules.md#braces)
+
+  <details>
+
+  ```swift
+  // WRONG
+  if !planet.isHabitable
+  {
+    planet.terraform()
+  }
+
+  class Planet
+  {
+    func terraform()
+    {
+      generateAtmosphere()
+      generateOceans()
+    }
+  }
+
+  // RIGHT
+  if !planet.isHabitable {
+    planet.terraform()
+  }
+
+  class Planet {
+    func terraform() {
+      generateAtmosphere()
+      generateOceans()
+    }
+  }
+  ```
+
+  </details>
+
 ### Functions
 
 * <a id='omit-function-void-return'></a>(<a href='#omit-function-void-return'>link</a>) **Omit `Void` return types from function definitions.** [![SwiftLint: redundant_void_return](https://img.shields.io/badge/SwiftLint-redundant__void__return-007A87.svg)](https://github.com/realm/SwiftLint/blob/master/Rules.md#redundant-void-return)
