@@ -728,7 +728,7 @@ _You can enable the following settings in Xcode by running [this script](resourc
   let dictionary: [String: Any] = [:]
   ```
 
-* <a id='single-line-expression-braces'></a>(<a href='#single-line-expression-braces'>link</a>) The opening brace following a single-line expression should not wrap to a newline.[![SwiftFormat: braces](https://img.shields.io/badge/SwiftFormat-braces-7B0051.svg)](https://github.com/nicklockwood/SwiftFormat/blob/master/Rules.md#braces)
+* <a id='single-line-statement-braces'></a>(<a href='#single-line-statement-braces'>link</a>) The opening brace following a single-line statement should be on the same line as the rest of the statement. [![SwiftFormat: braces](https://img.shields.io/badge/SwiftFormat-braces-7B0051.svg)](https://github.com/nicklockwood/SwiftFormat/blob/master/Rules.md#braces)
 
   <details>
 
@@ -757,6 +757,48 @@ _You can enable the following settings in Xcode by running [this script](resourc
     func terraform() {
       generateAtmosphere()
       generateOceans()
+    }
+  }
+  ```
+
+  </details>
+
+* <a id='multi-line-statement-braces'></a>(<a href='#multi-line-statement-braces'>link</a>) The opening brace following a multi-line statement should wrap to a new line. [![SwiftFormat: wrapMultilineStatementBraces](https://img.shields.io/badge/SwiftFormat-wrapMultilineStatementBraces-7B0051.svg)](https://github.com/nicklockwood/SwiftFormat/blob/master/Rules.md#wrapMultilineStatementBraces)
+
+  <details>
+
+  ```swift
+  // WRONG
+  if
+    let star = planet.nearestStar(),
+    planet.isInHabitableZone(of: star) {
+    planet.terraform()
+  }
+
+  class Planet {
+    func terraform(
+      atmosphereOptions: AtmosphereOptions = .default,
+      oceanOptions: OceanOptions = .default) {
+      generateAtmosphere(atmosphereOptions)
+      generateOceans(oceanOptions)
+    }
+  }
+
+  // RIGHT
+  if
+    let star = planet.nearestStar(),
+    planet.isInHabitableZone(of: star)
+  {
+    planet.terraform()
+  }
+
+  class Planet {
+    func terraform(
+      atmosphereOptions: AtmosphereOptions = .default,
+      oceanOptions: OceanOptions = .default) 
+    {
+      generateAtmosphere(atmosphereOptions)
+      generateOceans(oceanOptions)
     }
   }
   ```
